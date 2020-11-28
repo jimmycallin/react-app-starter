@@ -1,0 +1,30 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+  "overrides": [
+    {
+      "files": ["src/__tests__/*.js"],
+      "extends": ["plugin:jest/recommended"],
+      "plugins": ["jest"]
+    }
+  ],
+  "globals": {
+    "NODE_ENV": "readonly"
+  }
+}
