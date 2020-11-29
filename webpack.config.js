@@ -1,6 +1,9 @@
 "use strict";
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const dotenv = require("dotenv").config({
+  path: __dirname + "/.env." + (process.env.NODE_ENV || "local"),
+});
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -14,6 +17,7 @@ module.exports = function (env, { mode }) {
     target: "web",
     plugins: [
       new CleanWebpackPlugin(),
+      new webpack.DefinePlugin({ "process.env": JSON.stringify(dotenv.parsed) }),
       new HtmlWebpackPlugin(),
       new webpack.DefinePlugin({ NODE_ENV: isDevelopment ? '"development"' : '"production"' }),
     ],
